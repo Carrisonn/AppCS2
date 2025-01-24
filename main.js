@@ -8,14 +8,15 @@ searchInput.addEventListener('blur', validateSkin);
 form.addEventListener('submit', getSkins);
 
 
-window.addEventListener('load', () => {
-    form.reset();
-});
-
-
 const skinObj = {
     skin: ''
 }
+
+
+window.addEventListener('load', () => {
+    form.reset();
+    skinObj.skin = '';
+});
 
 
 /** Functions **/
@@ -28,7 +29,7 @@ function validateSkin(event) {
     } 
 
     skinObj.skin = event.target.value.trim().toLowerCase();
-}
+};
 
 async function getSkins(event) {
     event.preventDefault();
@@ -40,8 +41,11 @@ async function getSkins(event) {
     }
 
     const url = 'https://bymykel.github.io/CSGO-API/api/es-ES/skins.json';
-
     try {
+        const spanSpinner = document.createElement('span');
+        spanSpinner.classList.add('loader');
+        form.appendChild(spanSpinner);
+
         const response = await fetch(url);
         const data = await response.json();
         showData(data);
@@ -52,11 +56,14 @@ async function getSkins(event) {
             window.location.reload();
         }, 3000);
     }
-}
+};
 
 function showData(data) {
     cleanResults();
     
+    const removeSpinner = document.querySelector('.loader');
+    removeSpinner.remove();
+
     const resultsTitle = document.createElement('h2');
     resultsTitle.classList.add('results-title', 'no-margin');
     resultsTitle.textContent = 'Resultados';
@@ -65,9 +72,10 @@ function showData(data) {
     let foundResults = false;
     
     data.forEach( info => {
-        info.name = info.name.replace('| ', '').replace('★ ', '');
+        const nameSkinFromAPI = info.name = info.name.replace('| ', '').replace('★ ', '').toLowerCase();
+        const weaponNameFromAPI = info.weapon.name.toLowerCase();
 
-        if(info.weapon.name.toLowerCase().includes(skinObj.skin) || info.name.toLowerCase().includes(skinObj.skin) ) {
+        if(weaponNameFromAPI.includes(skinObj.skin) || nameSkinFromAPI.includes(skinObj.skin)) {
             foundResults = true;
             resultsDiv.classList.remove('display-none');
 
@@ -76,15 +84,15 @@ function showData(data) {
             
             const nameSkin = document.createElement('p');
             nameSkin.classList.add('info-api','no-margin', 'margin-bottom');
-            nameSkin.innerHTML = `Nombre: <span class="info-skin">${info.name}</span>`;
+            nameSkin.innerHTML = `Nombre: <span class="info-skin">${info.name.toUpperCase()}</span>`;
             
             const categoryName = document.createElement('p');
             categoryName.classList.add('info-api','no-margin', 'margin-bottom');
-            categoryName.innerHTML = `Categoría: <span class="info-skin">${info.category.name}</span>`;
+            categoryName.innerHTML = `Categoría: <span class="info-skin">${info.category.name.toUpperCase()}</span>`;
             
             const rarityName = document.createElement('p');
             rarityName.classList.add('info-api','no-margin', 'margin-bottom');
-            rarityName.innerHTML = `Rareza: <span class="info-skin">${info.rarity.name}</span>`;
+            rarityName.innerHTML = `Rareza: <span class="info-skin">${info.rarity.name.toUpperCase()}</span>`;
 
             const stattrak = document.createElement('p');
             stattrak.classList.add('info-api','no-margin', 'margin-bottom');
@@ -96,7 +104,7 @@ function showData(data) {
 
             const exclusivity = document.createElement('p');
             exclusivity.classList.add('info-api','no-margin', 'margin-bottom');
-            exclusivity.innerHTML = `Exclusividad: <span class="info-skin">${info.team.name}</span>`;
+            exclusivity.innerHTML = `Exclusividad: <span class="info-skin">${info.team.name.toUpperCase()}</span>`;
 
             const imageURL = document.createElement('p');
             imageURL.classList.add('info-api','no-margin', 'margin-bottom');
@@ -121,7 +129,7 @@ function showData(data) {
 
     searchInput.value = '';
     skinObj.skin = '';
-}
+};
 
 function showAlert(message) {
     cleanAlert();
@@ -132,7 +140,7 @@ function showAlert(message) {
     form.appendChild(error);
 
     closeError();
-}
+};
 
 function closeError() {
     const closeError = document.querySelector('.error');
@@ -143,7 +151,7 @@ function closeError() {
             closeError.remove();
         })
     }, 3000);
-}
+};
 
 function cleanAlert() {
     const error = document.querySelector('.error');
@@ -151,10 +159,10 @@ function cleanAlert() {
     if(error) {
         error.remove();
     }
-}
+};
 
 function cleanResults() {
     while(resultsDiv.firstChild) {
         resultsDiv.removeChild(resultsDiv.firstChild);
     }
-}
+};
