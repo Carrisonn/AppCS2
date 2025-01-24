@@ -1,7 +1,7 @@
 :root {
     --White: #ffffff;
     --Black: #000000;
-    --Purple: #782fbc;
+    --Purple: #8f3ddb;
     --Red: #ff3232;
     --Blue: #007bff;
 }
@@ -75,7 +75,7 @@ a {
 }
 
 .description {
-    font-size: 2.3rem;
+    font-size: 2.5rem;
     color: var(--White);
     margin-top: 0;
 }
@@ -109,7 +109,7 @@ a {
 }
 
 .search-button:hover {
-    background-color: #7119c3;
+    background-color: #712eb1;
 }
 
 .results {
@@ -145,7 +145,7 @@ a {
 .image-skin {
     background-color: var(--Blue);
     border-radius: .5rem;
-    padding: .3rem;
+    padding: .5rem;
     color: var(--White);
     transition: transform 0.3s ease-in-out;
     display: inline-block;
@@ -163,7 +163,7 @@ a {
 /** PC SCREEN **/
 @media screen and (min-width: 768px) {
     .results {
-        width: 45%;
+        width: 40%;
     }
 
     .info-api {
@@ -171,32 +171,47 @@ a {
         justify-content: space-between;
         align-items: center;
     }
+
+    .social-links-container {
+        width: 25%;
+    }
 }
 
 
 /** Footer **/
 .footer {
-    background-color: var(--Black);
+    backdrop-filter: brightness(30%);
     color: var(--White);
+    height: 12rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 7rem;
     font-size: 2rem;
 }
 
-.link-footer {
-    color: var(--White);
-    display: inline-flex;
-    padding: .4rem;
-    transition: transform 0.3s ease-in-out;
+.social-links-container {
+    margin: auto auto .5rem auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.link-footer:hover {
-    transform: scale(1.1);
+.social-links {
+    color: var(--White);
     background-color: var(--Purple);
+    display: flex;
+    padding: .5rem;
+    transition: transform 0.3s ease-in-out;
     border-radius: .5rem;
+    font-weight: 700;
 }
+
+.social-links:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 5px var(--Purple);
+}
+
 
 
 
