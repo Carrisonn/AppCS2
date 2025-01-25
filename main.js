@@ -40,21 +40,21 @@ async function getSkins(event) {
         return;
     }
 
+    searchInput.classList.remove('error-search-input');
+    removeAlert();
+
+    const spanSpinner = document.createElement('span');
+    spanSpinner.classList.add('loader');
+    form.appendChild(spanSpinner);
+
     const url = 'https://bymykel.github.io/CSGO-API/api/es-ES/skins.json';
     try {
-        const spanSpinner = document.createElement('span');
-        spanSpinner.classList.add('loader');
-        form.appendChild(spanSpinner);
-
         const response = await fetch(url);
         const data = await response.json();
         showData(data);
     } catch (error) {
-        console.log(error) ?? showAlert('Ocurrió un error');
-
-        setTimeout(() => {
-            window.location.reload();
-        }, 3000);
+        console.log(error);
+        showAlert('Ocurrió un error')
     }
 };
 
@@ -71,11 +71,11 @@ function showData(data) {
 
     let foundResults = false;
     
-    data.forEach( info => {
-        const nameSkinFromAPI = info.name = info.name.replace('| ', '').replace('★ ', '').toLowerCase();
-        const weaponNameFromAPI = info.weapon.name.toLowerCase();
+    data.forEach( skin => {
+        const nameSkinFromAPI = skin.name = skin.name.replace('| ', '').replace('★ ', '').toLowerCase();
+        const nameWeaponFromAPI = skin.weapon.name.toLowerCase();
 
-        if(weaponNameFromAPI.includes(skinObj.skin) || nameSkinFromAPI.includes(skinObj.skin)) {
+        if(nameWeaponFromAPI.includes(skinObj.skin) || nameSkinFromAPI.includes(skinObj.skin)) {
             foundResults = true;
             resultsDiv.classList.remove('display-none');
 
@@ -84,31 +84,31 @@ function showData(data) {
             
             const nameSkin = document.createElement('p');
             nameSkin.classList.add('info-api','no-margin', 'margin-bottom');
-            nameSkin.innerHTML = `Nombre: <span class="info-skin">${info.name.toUpperCase()}</span>`;
+            nameSkin.innerHTML = `Nombre: <span class="info-skin">${skin.name.toUpperCase()}</span>`;
             
             const categoryName = document.createElement('p');
             categoryName.classList.add('info-api','no-margin', 'margin-bottom');
-            categoryName.innerHTML = `Categoría: <span class="info-skin">${info.category.name.toUpperCase()}</span>`;
+            categoryName.innerHTML = `Categoría: <span class="info-skin">${skin.category.name.toUpperCase()}</span>`;
             
             const rarityName = document.createElement('p');
             rarityName.classList.add('info-api','no-margin', 'margin-bottom');
-            rarityName.innerHTML = `Rareza: <span class="info-skin">${info.rarity.name.toUpperCase()}</span>`;
+            rarityName.innerHTML = `Rareza: <span class="info-skin">${skin.rarity.name.toUpperCase()}</span>`;
 
             const stattrak = document.createElement('p');
             stattrak.classList.add('info-api','no-margin', 'margin-bottom');
-            stattrak.innerHTML = `StatTrak: <span class="info-skin">${info.stattrak === true ? 'Sí' : 'No'}</span>`;
+            stattrak.innerHTML = `StatTrak: <span class="info-skin">${skin.stattrak === true ? 'Sí' : 'No'}</span>`;
 
             const souvenir = document.createElement('p');
             souvenir.classList.add('info-api','no-margin', 'margin-bottom');
-            souvenir.innerHTML = `Souvenir: <span class="info-skin">${info.souvenir === true ? 'Sí' : 'No'}</span>`;
+            souvenir.innerHTML = `Souvenir: <span class="info-skin">${skin.souvenir === true ? 'Sí' : 'No'}</span>`;
 
             const exclusivity = document.createElement('p');
             exclusivity.classList.add('info-api','no-margin', 'margin-bottom');
-            exclusivity.innerHTML = `Exclusividad: <span class="info-skin">${info.team.name.toUpperCase()}</span>`;
+            exclusivity.innerHTML = `Exclusividad: <span class="info-skin">${skin.team.name.toUpperCase()}</span>`;
 
             const imageURL = document.createElement('p');
             imageURL.classList.add('info-api','no-margin', 'margin-bottom');
-            imageURL.innerHTML = `Imagen: <a href="${info.image}" class="image-skin" target="_blank">Click aquí</a>`;
+            imageURL.innerHTML = `Imagen: <a href="${skin.image}" class="image-skin" target="_blank">Click aquí</a>`;
 
             divSkin.appendChild(nameSkin);
             divSkin.appendChild(categoryName);
@@ -132,33 +132,30 @@ function showData(data) {
 };
 
 function showAlert(message) {
-    cleanAlert();
+    removeAlert();
 
     const error = document.createElement('p');
     error.classList.add('error');
     error.textContent = message;
+    searchInput.classList.add('error-search-input');
+
     form.appendChild(error);
 
-    closeError();
+    removeError();
 };
 
-function closeError() {
-    const closeError = document.querySelector('.error');
+function removeError() {
+    const removeError = document.querySelector('.error');
 
     setTimeout(() => {
-        closeError.classList.add('disappear');
-        closeError.addEventListener('animationend', () => {
-            closeError.remove();
-        })
-    }, 3000);
+        removeError.classList.add('disappear');
+        removeError.addEventListener('animationend', () => removeError.remove());
+    }, 4000);
 };
 
-function cleanAlert() {
+function removeAlert() {
     const error = document.querySelector('.error');
-
-    if(error) {
-        error.remove();
-    }
+    error ? error.remove() : null;
 };
 
 function cleanResults() {
