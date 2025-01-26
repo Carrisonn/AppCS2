@@ -1,4 +1,10 @@
 /** Global **/
+window.addEventListener('load', () => {
+    form.reset();
+    skinObj.skin = '';
+});
+
+
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-button');
 const resultsDiv = document.querySelector('#results');
@@ -13,12 +19,6 @@ const skinObj = {
 }
 
 
-window.addEventListener('load', () => {
-    form.reset();
-    skinObj.skin = '';
-});
-
-
 /** Functions **/
 function validateSkin(event) {
     if(event.target.value.trim() === '') {
@@ -27,7 +27,6 @@ function validateSkin(event) {
         event.target.value = '';
         return;
     } 
-
     skinObj.skin = event.target.value.trim().toLowerCase();
 };
 
@@ -70,15 +69,23 @@ function showData(data) {
     resultsDiv.appendChild(resultsTitle);
 
     let foundResults = false;
-    
+
     data.forEach( skin => {
         const nameSkinFromAPI = skin.name = skin.name.replace('| ', '').replace('★ ', '').toLowerCase();
         const nameWeaponFromAPI = skin.weapon.name.toLowerCase();
+        
+        let existCollectionName;
+        skin.collections ? skin.collections.forEach(collection => existCollectionName = collection.name.slice(9, collection.name.lenght).toUpperCase()) : null;
+        //I need to check if there are collections and then iterate again because there are some skins with the same name but with no collection
 
+        let existCrateName;
+        skin.crates ? skin.crates.forEach( crate => existCrateName = crate.name.toUpperCase()) : null;
+        //Same as above but for crates
+        
         if(nameWeaponFromAPI.includes(skinObj.skin) || nameSkinFromAPI.includes(skinObj.skin)) {
             foundResults = true;
             resultsDiv.classList.remove('display-none');
-
+            
             const divSkin = document.createElement('div');
             divSkin.classList.add('div-skin');
             
@@ -90,6 +97,14 @@ function showData(data) {
             categoryName.classList.add('info-api','no-margin', 'margin-bottom');
             categoryName.innerHTML = `Categoría: <span class="info-skin">${skin.category.name.toUpperCase()}</span>`;
             
+            const collectionName = document.createElement('p');
+            collectionName.classList.add('info-api','no-margin', 'margin-bottom');
+            collectionName.innerHTML = `Colección: <span class="info-skin">${existCollectionName ? existCollectionName : 'Sin colección'}</span>`;
+            
+            const crateName = document.createElement('p');
+            crateName.classList.add('info-api','no-margin', 'margin-bottom');
+            crateName.innerHTML = `Caja: <span class="info-skin">${existCrateName ? existCrateName : 'Sin caja'}</span>`;
+
             const rarityName = document.createElement('p');
             rarityName.classList.add('info-api','no-margin', 'margin-bottom');
             rarityName.innerHTML = `Rareza: <span class="info-skin">${skin.rarity.name.toUpperCase()}</span>`;
@@ -112,6 +127,8 @@ function showData(data) {
 
             divSkin.appendChild(nameSkin);
             divSkin.appendChild(categoryName);
+            divSkin.appendChild(collectionName);
+            divSkin.appendChild(crateName);
             divSkin.appendChild(rarityName);
             divSkin.appendChild(stattrak);
             divSkin.appendChild(souvenir);
@@ -138,7 +155,6 @@ function showAlert(message) {
     error.classList.add('error');
     error.textContent = message;
     searchInput.classList.add('error-search-input');
-
     form.appendChild(error);
 
     removeError();
