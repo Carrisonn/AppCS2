@@ -69,6 +69,83 @@ a {
     text-align: center;
 }
 
+.menu-burger-icon {
+    filter: invert(100%);
+    margin-bottom: 2rem;
+}
+
+.menu-burger-icon img {
+    cursor: pointer;
+}
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--Black);
+    z-index: 10; 
+    animation: showSideBar 0.3s ease-in-out;
+}
+
+@keyframes showSideBar {
+    0% { width: 0%; }
+    100% { width: 50%; }
+}
+
+.close-sidebar-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    text-transform: uppercase;
+    color: var(--White);
+    background-color: var(--Red);
+    border-radius: 50%;
+    padding: .7rem;
+    cursor: pointer;
+    border: none;
+}
+
+.close-sidebar {
+    animation: closeSideBar 0.3s ease-in-out; 
+}
+
+@keyframes closeSideBar {
+    0% { width: 50%; }
+    100% { width: 0%; }
+}
+
+.div-nav-links {
+    margin: 7rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: showNavLinks .8s ease-in-out;
+    text-align: center;
+}
+
+@keyframes showNavLinks {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.close-div-nav-links {
+    animation: closeNavLinks 0.3s ease-in-out;
+}
+
+@keyframes closeNavLinks {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.nav-link {
+    color: var(--White);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
 .title {
     color: var(--White);
     font-size: 4rem;
@@ -145,7 +222,7 @@ a {
 }
 
 .info-api {
-    padding: .5rem;
+    padding: .8rem;
     border-bottom: 1px solid var(--Black);
 }
 
@@ -173,6 +250,34 @@ a {
 
 /** PC SCREEN **/
 @media screen and (min-width: 768px) {
+    .menu-burger-icon {
+        filter: invert(100%);
+        display: inline-flex;
+        position: absolute;
+        top: 3.5rem;
+        left: 25rem;
+        cursor: pointer;
+    }
+
+    .sidebar {
+        width: 20%;
+        animation: showSideBar 0.4s ease-in-out;
+    }
+
+    .close-sidebar {
+        animation: closeSideBar 0.4s ease-in-out; 
+    }
+
+    @keyframes showSideBar {
+        0% { width: 0; }
+        100% { width: 20%; }
+    }
+
+    @keyframes closeSideBar {
+        0% { width: 20%; }
+        100% { width: 0; }
+    }
+
     .results {
         width: 50%;
     }
@@ -202,9 +307,9 @@ a {
 
 .social-links-container {
     margin: auto auto .5rem auto;
-    text-align: center;
     display: flex;
-    justify-content: space-around;
+    gap: 10rem;
+    justify-content: center;
     align-items: center;
 }
 
@@ -220,7 +325,7 @@ a {
 
 .social-links:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 10px 5px var(--Purple);
+    box-shadow: 0px 0px 10px 3px var(--Purple);
 }
 
 
