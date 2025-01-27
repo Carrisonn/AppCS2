@@ -19,9 +19,21 @@
 
     <body>
         <main class="container">
-            <h1 class="title">CSGO APP</h1>
+            <h1 class="title">CS2 APP</h1>
+            <div id="menu-burger-icon" class="menu-burger-icon">
+                <img src="icons/menu-burger.svg" title="Menu Burger Icon" width="30px" height="30px">
+            </div>
             <p class="description">Buscador de skins de Counter-Strike 2</p>
 
+            <div id="sidebar" class="sidebar display-none">
+                <div id="div-nav-links" class="div-nav-links">
+                    <nav>
+                        <li><a href="stickers.html" class="nav-link">Stickers</a></li>
+                    </nav>
+                </div>
+                <button id="close-sidebar-btn" class="close-sidebar-btn">X</button>
+            </div>
+            
             <section>
                 <form id="form" class="form">
                     <input type="text" id="search-input" class="search-input" placeholder="Desert Eagle...">
@@ -42,6 +54,6 @@
             <p class="made-by">Made with ❤️ by Carrison</p>
         </footer>
         
-        <script src="main.js"></script>
+        <script type="module" src="js/main.js"></script>
     </body>
 </html>
