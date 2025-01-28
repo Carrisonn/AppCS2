@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Web para buscar skins de Counter-Strike: Global Offensive" />
+        <meta name="description" content="Web para buscar skins y más sobre Counter-Strike 2" />
         <link rel="icon" href="icons/cs2-icon.avif" type="image/avif"> 
         <title>App CS 2</title>
         <link rel="preload" href="css/normalize.css" as="style">
@@ -23,12 +23,15 @@
             <div id="menu-burger-icon" class="menu-burger-icon">
                 <img src="icons/menu-burger.svg" title="Menu Burger Icon" width="30px" height="30px">
             </div>
-            <p class="description">Buscador de skins de Counter-Strike 2</p>
+            <p class="description">Toda la información sobre skins de Counter-Strike 2</p>
 
             <div id="sidebar" class="sidebar display-none">
                 <div id="div-nav-links" class="div-nav-links">
                     <nav>
-                        <li><a href="stickers.html" class="nav-link">Stickers</a></li>
+                        <li><a href="sections/stickers.html" class="nav-link">Stickers</a></li>
+                        <li><a href="sections/collections.html" class="nav-link">Colecciones</a></li>
+                        <li><a href="sections/crates.html" class="nav-link">Cajas</a></li>
+                        <li><a href="sections/agents.html" class="nav-link">Agentes</a></li>
                     </nav>
                 </div>
                 <button id="close-sidebar-btn" class="close-sidebar-btn">X</button>
@@ -54,6 +57,6 @@
             <p class="made-by">Made with ❤️ by Carrison</p>
         </footer>
         
-        <script type="module" src="js/main.js"></script>
+        <script type="module" src="js/skins.js"></script>
     </body>
 </html>
