@@ -1,4 +1,4 @@
-import { searchInput, form } from './variables.js';
+import { searchInput, form, sideBar, divNavLinks, resultsDiv } from './selectors.js';
 
 export function showAlert(message) {
     removeAlert();
@@ -12,7 +12,7 @@ export function showAlert(message) {
     removeError();
 };
 
-export function removeError() {
+function removeError() {
     const removeError = document.querySelector('.error');
     setTimeout(() => {
         removeError.classList.add('disappear');
@@ -23,4 +23,33 @@ export function removeError() {
 export function removeAlert() {
     const error = document.querySelector('.error');
     error ? error.remove() : null;
+};
+
+export function showSideBar() {
+    sideBar.classList.add('open', 'display-grid');
+    sideBar.classList.remove('display-none', 'close-sidebar-anim');
+    divNavLinks.classList.remove('close-div-nav-links-anim');
+};
+
+export function closeSideBar() {
+    sideBar.classList.contains('open') ? sideBar.classList.add('close-sidebar-anim') : null;
+    sideBar.classList.remove('open');
+    divNavLinks.classList.add('close-div-nav-links-anim');
+    
+    sideBar.addEventListener('animationend', () => {
+        if(sideBar.classList.contains('close-sidebar-anim')) {
+            sideBar.classList.remove('display-grid')
+            sideBar.classList.add('display-none')
+        }  
+    });
+};
+
+export function submitWithEnterKey() {
+    form.addEventListener('keydown', event => event.key === 'Enter' ? getSkins() : null);
+};
+
+export function removeResults() {
+    while(resultsDiv.firstChild) {
+        resultsDiv.removeChild(resultsDiv.firstChild);
+    }
 };
