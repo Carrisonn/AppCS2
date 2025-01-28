@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="../icons/cs2-icon.avif" type="image/avif"> 
+        <title>App CS 2</title>
+        <link rel="preload" href="../css/normalize.css" as="style">
+        <link rel="stylesheet" href="../css/normalize.css">
+        <link rel="preload" href="../css/styles.css" as="style">
+        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="preload" href="../css/spinner.css" as="style">
+        <link rel="stylesheet" href="../css/spinner.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <main class="container">
+            <h1 class="title">CS2 APP</h1>
+            <div id="menu-burger-icon" class="menu-burger-icon">
+                <img src="../icons/menu-burger.svg" title="Menu Burger Icon" width="30px" height="30px">
+            </div>
+            <p class="description">Toda la información sobre stickers de Counter-Strike 2</p>
+
+            <div id="sidebar" class="sidebar display-none">
+                <div id="div-nav-links" class="div-nav-links">
+                    <nav>
+                        <li><a href="/" class="nav-link">Skins</a></li>
+                        <li><a href="collections.html" class="nav-link">Colecciones</a></li>
+                        <li><a href="crates.html" class="nav-link">Cajas</a></li>
+                        <li><a href="agents.html" class="nav-link">Agentes</a></li>
+                    </nav>
+                </div>
+                <button id="close-sidebar-btn" class="close-sidebar-btn">X</button>
+            </div>
+            
+            <section>
+                <form id="form" class="form">
+                    <input type="text" id="search-input" class="search-input" placeholder="Fnatic...">
+
+                    <input type="submit" id="search-button" class="search-button" form="form" value="Buscar">
+                </form>
+
+                <div class="container results display-none" id="results"></div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <div class=" container social-links-container">
+                <a href="https://github.com/Carrisonn" class="social-links" target="_blank">Github <img src="../icons/github-icon.svg" title="Github Icon" width="30px" height="19px"></a>
+                <a href="https://x.com/Carrisonnnn" class="social-links" target="_blank">Twitter <img src="../icons/twitter-icon.svg" title="Twitter Icon" width="30px" height="25px"></a>
+            </div>
+
+            <p class="made-by">Made with ❤️ by Carrison</p>
+        </footer>
+        
+        <script type="module" src="../js/skins.js"></script>
+    </body>
+</html>
