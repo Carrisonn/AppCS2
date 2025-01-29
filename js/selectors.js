@@ -10,3 +10,7 @@ export const divNavLinks = document.querySelector('#div-nav-links');
 export const skinObj = {
     skin: ''
 }
+
+export const stickerObj = {
+    sticker: ''
+}
