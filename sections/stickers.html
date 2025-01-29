@@ -19,8 +19,8 @@
     <body>
         <main class="container">
             <h1 class="title">CS2 APP</h1>
-            <div id="menu-burger-icon" class="menu-burger-icon">
-                <img src="../icons/menu-burger.svg" title="Menu Burger Icon" width="30px" height="30px">
+            <div class="div-menu-burger-icon">
+                <img id="menu-burger-icon" src="../icons/menu-burger.svg" title="Menu Burger Icon" width="30px" height="30px">
             </div>
             <p class="description">Toda la información sobre stickers de Counter-Strike 2</p>
 
@@ -39,10 +39,8 @@
             <section>
                 <form id="form" class="form">
                     <input type="text" id="search-input" class="search-input" placeholder="Fnatic...">
-
                     <input type="submit" id="search-button" class="search-button" form="form" value="Buscar">
                 </form>
-
                 <div class="container results display-none" id="results"></div>
             </section>
         </main>
@@ -52,10 +50,9 @@
                 <a href="https://github.com/Carrisonn" class="social-links" target="_blank">Github <img src="../icons/github-icon.svg" title="Github Icon" width="30px" height="19px"></a>
                 <a href="https://x.com/Carrisonnnn" class="social-links" target="_blank">Twitter <img src="../icons/twitter-icon.svg" title="Twitter Icon" width="30px" height="25px"></a>
             </div>
-
             <p class="made-by">Made with ❤️ by Carrison</p>
         </footer>
         
-        <script type="module" src="../js/skins.js"></script>
+        <script type="module" src="../js/scriptsAPI/stickers.js"></script>
     </body>
 </html>
