@@ -17,7 +17,7 @@ function removeError() {
     setTimeout(() => {
         removeError.classList.add('disappear');
         removeError.addEventListener('animationend', () => removeError.remove());
-    }, 5000);
+    }, 4000);
 };
 
 export function removeAlert() {
@@ -42,10 +42,6 @@ export function closeSideBar() {
             sideBar.classList.add('display-none')
         }  
     });
-};
-
-export function submitWithEnterKey() {
-    form.addEventListener('keydown', event => event.key === 'Enter' ? getSkins() : null);
 };
 
 export function removeResults() {
