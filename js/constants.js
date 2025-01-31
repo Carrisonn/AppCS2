@@ -18,10 +18,15 @@ export const stickerObj = {
 export const crateObj = {
     crate: ''
 }
+
 export const crateTypeObj = {
     'case': 'caja',
     'sticker capsule': 'cápsula de stickers',
     'souvenir': 'souvenir',
     'autograph capsule': 'cápsula de autógrafos',
     'patch capsule': 'cápsula de parches',
+}
+
+export const agentObj = {
+    agent: ''
 }
