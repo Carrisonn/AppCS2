@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html">
         <meta name="description" content="Web para buscar skins y más sobre Counter-Strike 2" />
         <link rel="icon" href="icons/cs2-icon.avif" type="image/avif"> 
         <title>App CS 2</title>
@@ -20,18 +21,20 @@
     <body>
         <main class="container">
             <h1 class="title">CS2 APP</h1>
-            <div id="menu-burger-icon" class="menu-burger-icon">
-                <img src="icons/menu-burger.svg" title="Menu Burger Icon" width="30px" height="30px">
+            <div class="div-menu-burger-icon">
+                <img src="icons/menu-burger.svg" id="menu-burger-icon" title="Menu Burger Icon" width="30px" height="30px">
             </div>
             <p class="description">Toda la información sobre skins de Counter-Strike 2</p>
 
             <div id="sidebar" class="sidebar display-none">
                 <div id="div-nav-links" class="div-nav-links">
                     <nav>
-                        <li><a href="sections/stickers.html" class="nav-link">Stickers</a></li>
-                        <li><a href="sections/collections.html" class="nav-link">Colecciones</a></li>
-                        <li><a href="sections/crates.html" class="nav-link">Cajas</a></li>
-                        <li><a href="sections/agents.html" class="nav-link">Agentes</a></li>
+                        <ul>
+                            <li><a href="sections/stickers.html" class="nav-link">Stickers</a></li>
+                            <li><a href="sections/collections.html" class="nav-link">Colecciones</a></li>
+                            <li><a href="sections/crates.html" class="nav-link">Cajas</a></li>
+                            <li><a href="sections/agents.html" class="nav-link">Agentes</a></li>
+                        </ul>
                     </nav>
                 </div>
                 <button id="close-sidebar-btn" class="close-sidebar-btn">X</button>
