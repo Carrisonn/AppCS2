@@ -1,4 +1,4 @@
-import { searchInput, form, resultsDiv, skinObj, menuBurgerIcon,  closeSideBarBtn } from '../selectors.js';
+import { searchInput, form, resultsDiv, skinObj, menuBurgerIcon, closeSideBarBtn } from '../constants.js';
 import { showAlert, removeAlert, showSideBar, closeSideBar, removeResults } from '../utilities.js';
 
 
@@ -10,8 +10,8 @@ window.addEventListener('load', () => {
 
 searchInput.addEventListener('input', readValue);
 form.addEventListener('submit', getSkins);
-menuBurgerIcon.addEventListener('click', showSideBar);
-closeSideBarBtn.addEventListener('click', closeSideBar);
+menuBurgerIcon.addEventListener('click', showSideBar); // utilities.js
+closeSideBarBtn.addEventListener('click', closeSideBar); // utilities.js
 
 
 function readValue(event) {
@@ -42,7 +42,7 @@ async function getSkins(event) {
         showData(data);
     } catch (error) {
         console.log(error);
-        showAlert('Ocurrió un error')
+        showAlert('Ocurrió un error al obtener las skins');
     }
 };
 
