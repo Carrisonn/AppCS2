@@ -9,10 +9,10 @@ export function showAlert(message) {
     searchInput.classList.add('error-search-input');
     form.appendChild(error);
 
-    removeError();
+    animRemoveError();
 };
 
-function removeError() {
+function animRemoveError() {
     const removeError = document.querySelector('.error');
     setTimeout(() => {
         removeError.classList.add('disappear');
