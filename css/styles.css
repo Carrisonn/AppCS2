@@ -5,7 +5,10 @@
     --BlackSidebar: #161616;
     --Purple: #8f3ddb;
     --Red: #ff3232;
+    --Yellow: #a3a303;
+    --Yellow2: #eeeed0;
     --Blue: #007bff;
+    --Blue2: #b9e1f1;
     --Green: #c1ffe5;
     --Green2: #00824c;
 }
@@ -118,11 +121,7 @@ a {
 }
 
 .div-nav-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     animation: showNavLinks .7s ease-in-out;
-    text-align: center;
 }
 
 @keyframes showNavLinks {
@@ -344,4 +343,35 @@ nav li {
     .social-links-container {
         width: 25%;
     }
+}
+
+/** crates.html **/
+.div-select-normal {
+    display: flex;
+    justify-content: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--Black);
+}
+
+.select-crate-normal {
+    width: 70%;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 1px solid var(--Blue);
+    background-color: var(--Blue2);
+}
+
+.div-select-rare {
+    display: flex;
+    justify-content: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--Black);
+}
+
+.select-crate-rare {
+    width: 70%;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 1px solid var(--Yellow);
+    background-color: var(--Yellow2);
 }
