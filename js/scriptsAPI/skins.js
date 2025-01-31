@@ -10,8 +10,8 @@ window.addEventListener('load', () => {
 
 searchInput.addEventListener('input', readValue);
 form.addEventListener('submit', getSkins);
-menuBurgerIcon.addEventListener('click', showSideBar); // utilities.js
-closeSideBarBtn.addEventListener('click', closeSideBar); // utilities.js
+menuBurgerIcon.addEventListener('click', showSideBar); 
+closeSideBarBtn.addEventListener('click', closeSideBar);
 
 
 function readValue(event) {
@@ -60,17 +60,17 @@ function showData(data) {
     let foundResults = false;
 
     data.forEach( skin => {
-        const nameSkinFromAPI = skin.name = skin.name.replace('| ', '').replace('★ ', '').toLowerCase();
-        const nameWeaponFromAPI = skin.weapon.name.toLowerCase();
+        const nameSkinFormatted = skin.name.replace('| ', '').replace('★ ', '').toLowerCase();
+        const nameWeaponFormatted = skin.weapon.name.toLowerCase();
         
-        if(nameWeaponFromAPI.includes(skinObj.skin) || nameSkinFromAPI.includes(skinObj.skin)) {
+        if(nameWeaponFormatted.includes(skinObj.skin) || nameSkinFormatted.includes(skinObj.skin)) {
             foundResults = true;
             resultsDiv.classList.remove('display-none');
 
             let existCollectionName;
             skin.collections ? skin.collections.forEach(collection => existCollectionName = collection.name.slice(9, collection.name.lenght).toUpperCase()) : null;
             /* I need to check if there are collections and then iterate again because there are some skins with similar name but without collection,
-            otherwise I could be acces to the values with something like that: 'skin.collecttions[0].name' */
+            otherwise I could be acces to the values with something like that: 'skin.collections[0].name' */
     
             let existCrateName;
             skin.crates ? skin.crates.forEach(crate => existCrateName = crate.name.toUpperCase()) : null;
@@ -81,7 +81,7 @@ function showData(data) {
             
             const nameSkin = document.createElement('p');
             nameSkin.classList.add('info-api','no-margin', 'padding');
-            nameSkin.innerHTML = `Nombre: <span class="info-span">${nameSkinFromAPI.toUpperCase()}</span>`;
+            nameSkin.innerHTML = `Nombre: <span class="info-span">${nameSkinFormatted.toUpperCase()}</span>`;
             
             const categoryNameSkin = document.createElement('p');
             categoryNameSkin.classList.add('info-api','no-margin', 'padding');
@@ -113,7 +113,8 @@ function showData(data) {
 
             const imageUrlSkin = document.createElement('p');
             imageUrlSkin.classList.add('info-api','no-margin', 'padding');
-            imageUrlSkin.innerHTML = `Imagen: <a href="${skin.image}" class="image-ancor" target="_blank">Imagen</a>`;
+            imageUrlSkin.innerHTML = `Imagen: <a href="${skin.image}" class="image-ancor" target="_blank">Imagen de la skin</a>`;
+
 
             divSkin.appendChild(nameSkin);
             divSkin.appendChild(categoryNameSkin);
