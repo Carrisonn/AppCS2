@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html">
         <link rel="icon" href="../icons/cs2-icon.avif" type="image/avif"> 
         <title>App CS 2</title>
         <link rel="preload" href="../css/normalize.css" as="style">
@@ -18,7 +19,7 @@
 
     <body>
         <main class="container">
-            <h1 class="title">CS2 APP</h1>
+            <h1 class="title">STICKERS</h1>
             <div class="div-menu-burger-icon">
                 <img id="menu-burger-icon" src="../icons/menu-burger.svg" title="Menu Burger Icon" width="30px" height="30px">
             </div>
@@ -27,10 +28,12 @@
             <div id="sidebar" class="sidebar display-none">
                 <div id="div-nav-links" class="div-nav-links">
                     <nav>
-                        <li><a href="../index.html" class="nav-link">Skins</a></li>
-                        <li><a href="collections.html" class="nav-link">Colecciones</a></li>
-                        <li><a href="crates.html" class="nav-link">Cajas</a></li>
-                        <li><a href="agents.html" class="nav-link">Agentes</a></li>
+                        <ul>
+                            <li><a href="../index.html" class="nav-link">Skins</a></li>
+                            <li><a href="collections.html" class="nav-link">Colecciones</a></li>
+                            <li><a href="crates.html" class="nav-link">Cajas</a></li>
+                            <li><a href="agents.html" class="nav-link">Agentes</a></li>
+                        </ul>
                     </nav>
                 </div>
                 <button id="close-sidebar-btn" class="close-sidebar-btn">X</button>
@@ -38,7 +41,7 @@
             
             <section>
                 <form id="form" class="form">
-                    <input type="text" id="search-input" class="search-input" placeholder="Fnatic...">
+                    <input type="text" id="search-input" class="search-input" placeholder="s1mple...">
                     <input type="submit" id="search-button" class="search-button" form="form" value="Buscar">
                 </form>
                 <div class="container results display-none" id="results"></div>
