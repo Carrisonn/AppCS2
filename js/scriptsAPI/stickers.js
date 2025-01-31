@@ -10,8 +10,8 @@ window.addEventListener('load', () => {
 
 searchInput.addEventListener('input', readValue);
 form.addEventListener('submit', getStickers);
-menuBurgerIcon.addEventListener('click', showSideBar); // utilities.js
-closeSideBarBtn.addEventListener('click', closeSideBar); // utilities.js
+menuBurgerIcon.addEventListener('click', showSideBar);
+closeSideBarBtn.addEventListener('click', closeSideBar);
 
 
 function readValue(event) {
@@ -60,9 +60,9 @@ function showData(data) {
     let foundResults = false;
 
     data.forEach( sticker => {
-        const nameStickerFormated = sticker.name.slice(10, sticker.name.lenght).replace(/\s*\|/g, '').toLowerCase();
+        const nameStickerFormatted = sticker.name.slice(10, sticker.name.lenght).replace(/\s*\|/g, '').toLowerCase();
 
-        if(nameStickerFormated.includes(stickerObj.sticker)) {
+        if(nameStickerFormatted.includes(stickerObj.sticker)) {
             foundResults = true;
             resultsDiv.classList.remove('display-none');
 
@@ -74,7 +74,7 @@ function showData(data) {
 
             const nameSticker = document.createElement('p');
             nameSticker.classList.add('info-api','no-margin', 'padding');
-            nameSticker.innerHTML = `Nombre: <span class="info-span">${nameStickerFormated.toUpperCase()}</span>`;
+            nameSticker.innerHTML = `Nombre: <span class="info-span">${nameStickerFormatted.toUpperCase()}</span>`;
 
             const rarityNameSticker = document.createElement('p');
             rarityNameSticker.classList.add('info-api','no-margin', 'padding');
@@ -94,7 +94,8 @@ function showData(data) {
 
             const imageUrlSticker = document.createElement('p');
             imageUrlSticker.classList.add('info-api','no-margin', 'padding');
-            imageUrlSticker.innerHTML = `Imagen: <a href="${sticker.image}" class="image-ancor" target="_blank">Imagen</a>`;
+            imageUrlSticker.innerHTML = `Imagen: <a href="${sticker.image}" class="image-ancor" target="_blank">Imagen del sticker</a>`;
+
 
             divSticker.appendChild(nameSticker);
             divSticker.appendChild(rarityNameSticker);
