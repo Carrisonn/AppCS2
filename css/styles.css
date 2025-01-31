@@ -123,7 +123,6 @@ a {
     align-items: center;
     animation: showNavLinks .7s ease-in-out;
     text-align: center;
-    list-style: none;
 }
 
 @keyframes showNavLinks {
@@ -140,11 +139,16 @@ a {
     100% { opacity: 0; }
 }
 
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
 nav li {
     margin-bottom: 3rem;
     background-color: var(--Purple);
-    padding: 1rem;
     border-radius: .5rem;
+    padding: 1rem;
 }
 
 .nav-link {
