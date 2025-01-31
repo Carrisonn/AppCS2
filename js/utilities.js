@@ -1,4 +1,4 @@
-import { searchInput, form, sideBar, divNavLinks, resultsDiv } from './selectors.js';
+import { searchInput, form, sideBar, divNavLinks, resultsDiv } from './constants.js';
 
 export function showAlert(message) {
     removeAlert();
