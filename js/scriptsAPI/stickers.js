@@ -41,7 +41,7 @@ async function getStickers(event) {
         const data = await response.json();
         showData(data);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         showAlert('Ocurrió un error al obtener los stickers');
     }
 };
@@ -60,7 +60,7 @@ function showData(data) {
     let foundResults = false;
 
     data.forEach( sticker => {
-        const nameStickerFormatted = sticker.name.slice(10, sticker.name.lenght).replace(/\s*\|/g, '').toLowerCase();
+        const nameStickerFormatted = sticker.name.slice(10).replace(/\s*\|/g, '').toLowerCase();
 
         if(nameStickerFormatted.includes(stickerObj.sticker)) {
             foundResults = true;
