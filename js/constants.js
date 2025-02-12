@@ -7,26 +7,15 @@ export const closeSideBarBtn = document.querySelector('#close-sidebar-btn');
 export const divNavLinks = document.querySelector('#div-nav-links');
 
 
-export const skinObj = {
-    skin: ''
-}
-
-export const stickerObj = {
-    sticker: ''
-}
-
-export const crateObj = {
-    crate: ''
-}
-
+export const skinObj = { skin: '' };
+export const stickerObj = { sticker: '' };
+export const agentObj = { agent: '' };
+export const collectionObj = { collection: '' };
+export const crateObj = { crate: '' };
 export const crateTypeObj = {
     'case': 'caja',
     'sticker capsule': 'cápsula de stickers',
     'souvenir': 'souvenir',
     'autograph capsule': 'cápsula de autógrafos',
-    'patch capsule': 'cápsula de parches',
-}
-
-export const agentObj = {
-    agent: ''
-}
+    'patch capsule': 'cápsula de parches'
+};
