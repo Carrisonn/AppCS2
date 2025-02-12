@@ -41,7 +41,7 @@ async function getAgents(event) {
         const data = await response.json();
         showData(data);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         showAlert('Ocurrió un error al obtener los agentes');
     }
 };
