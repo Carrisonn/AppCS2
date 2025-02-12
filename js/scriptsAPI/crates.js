@@ -41,7 +41,7 @@ async function getCrates(event) {
         const data = await response.json();
         showData(data);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         showAlert('Ocurrió un error al obtener las cajas');
     }
 };
@@ -141,8 +141,6 @@ function showData(data) {
 
 function checkTypeCrate(crateType) {
     for (const [key, value] of Object.entries(crateTypeObj)) {
-        if(key === crateType) {
-            return value.toLocaleUpperCase();
-        }
+        if(key === crateType) return value.toLocaleUpperCase(); 
     }
 };
