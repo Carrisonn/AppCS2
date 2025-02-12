@@ -150,6 +150,10 @@ nav li {
     padding: 1rem;
 }
 
+nav li:last-child {
+    margin-bottom: 0;
+}
+
 .nav-link {
     color: var(--White);
     text-transform: uppercase;
