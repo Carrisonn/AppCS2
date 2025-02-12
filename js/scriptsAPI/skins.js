@@ -41,7 +41,7 @@ async function getSkins(event) {
         const data = await response.json();
         showData(data);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         showAlert('Ocurrió un error al obtener las skins');
     }
 };
@@ -68,7 +68,7 @@ function showData(data) {
             resultsDiv.classList.remove('display-none');
 
             let existCollectionName;
-            skin.collections ? skin.collections.forEach(collection => existCollectionName = collection.name.slice(9, collection.name.lenght).toUpperCase()) : null;
+            skin.collections ? skin.collections.forEach(collection => existCollectionName = collection.name.slice(9).toUpperCase()) : null;
             /* I need to check if there are collections and then iterate again because there are some skins with similar name but without collection,
             otherwise I could be acces to the values with something like that: 'skin.collections[0].name' */
     
@@ -101,11 +101,11 @@ function showData(data) {
 
             const stattrakNameSkin = document.createElement('p');
             stattrakNameSkin.classList.add('info-api','no-margin', 'padding');
-            stattrakNameSkin.innerHTML = `StatTrak: <span class="info-span">${skin.stattrak === true ? 'Sí' : 'No'}</span>`;
+            stattrakNameSkin.innerHTML = `StatTrak: <span class="info-span">${skin.stattrak ? 'Sí' : 'No'}</span>`;
 
             const souvenirNameSkin = document.createElement('p');
             souvenirNameSkin.classList.add('info-api','no-margin', 'padding');
-            souvenirNameSkin.innerHTML = `Souvenir: <span class="info-span">${skin.souvenir === true ? 'Sí' : 'No'}</span>`;
+            souvenirNameSkin.innerHTML = `Souvenir: <span class="info-span">${skin.souvenir ? 'Sí' : 'No'}</span>`;
 
             const teamNameSkin = document.createElement('p');
             teamNameSkin.classList.add('info-api','no-margin', 'padding');
