@@ -13,9 +13,9 @@ export const agentObj = { agent: '' };
 export const collectionObj = { collection: '' };
 export const crateObj = { crate: '' };
 export const crateTypeObj = {
-    'case': 'caja',
-    'sticker capsule': 'cápsula de stickers',
-    'souvenir': 'souvenir',
-    'autograph capsule': 'cápsula de autógrafos',
-    'patch capsule': 'cápsula de parches'
+  'case': 'caja',
+  'sticker capsule': 'cápsula de stickers',
+  'souvenir': 'souvenir',
+  'autograph capsule': 'cápsula de autógrafos',
+  'patch capsule': 'cápsula de parches'
 };

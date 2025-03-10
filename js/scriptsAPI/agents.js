@@ -3,8 +3,8 @@ import { showAlert, removeAlert, showSideBar, closeSideBar, removeResults } from
 
 
 window.addEventListener('load', () => {
-    form.reset();
-    agentObj.agent = '';
+  agentObj.agent = '';
+  form.reset();
 });
 
 
@@ -15,95 +15,90 @@ closeSideBarBtn.addEventListener('click', closeSideBar);
 
 
 function readValue(event) {
-    agentObj.agent = event.target.value.trim().toLowerCase();
+  agentObj.agent = event.target.value.trim().toLowerCase();
 };
 
 async function getAgents(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    if(agentObj.agent === '') {
-        showAlert('El campo no puede estar vacío');
-        searchInput.value = '';
-        agentObj.agent = '';
-        return;
-    }
+  if (agentObj.agent === '') return showAlert('El campo no puede estar vacío');
 
-    searchInput.classList.remove('error-search-input');
-    removeAlert();
+  searchInput.classList.remove('error-search-input');
+  removeAlert();
 
-    const spanSpinner = document.createElement('span');
-    spanSpinner.classList.add('loader');
-    form.appendChild(spanSpinner);
+  const spanSpinner = document.createElement('span');
+  spanSpinner.classList.add('loader');
+  form.appendChild(spanSpinner);
 
-    const url = 'https://bymykel.github.io/CSGO-API/api/es-ES/agents.json';
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        showData(data);
-    } catch (error) {
-        console.error(error);
-        showAlert('Ocurrió un error al obtener los agentes');
-    }
+  const url = 'https://bymykel.github.io/CSGO-API/api/es-ES/agents.json';
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    showData(data);
+  } catch (error) {
+    console.error(error);
+    showAlert('Ocurrió un error al obtener los agentes');
+  }
 };
 
 function showData(data) {
-    removeResults()
-    
-    const removeSpinner = document.querySelector('.loader');
-    removeSpinner.remove();
-    
-    const resultsTitle = document.createElement('h2');
-    resultsTitle.classList.add('results-title', 'no-margin');
-    resultsTitle.textContent = 'Resultados';
-    resultsDiv.appendChild(resultsTitle);
+  removeResults()
 
-    let foundResults = false;
+  const removeSpinner = document.querySelector('.loader');
+  removeSpinner.remove();
 
-    data.forEach( agent => {
-        const nameAgentFormatted = agent.name.replace(/["'><]/g, '').replace('| ', '').toLowerCase();
-        
-        if(nameAgentFormatted.includes(agentObj.agent)) {
-            foundResults = true;
-            resultsDiv.classList.remove('display-none');
+  const resultsTitle = document.createElement('h2');
+  resultsTitle.classList.add('results-title', 'no-margin');
+  resultsTitle.textContent = 'Resultados';
+  resultsDiv.appendChild(resultsTitle);
 
-            const divAgent = document.createElement('div');
-            divAgent.classList.add('div-skin');
+  let foundResults = false;
 
-            const nameAgent = document.createElement('p');
-            nameAgent.classList.add('info-api','no-margin', 'padding');
-            nameAgent.innerHTML = `Nombre: <span class="info-span">${nameAgentFormatted.toUpperCase()}</span>`;
+  data.forEach(agent => {
+    const nameAgentFormatted = agent.name.replace(/["'><]/g, '').replace('| ', '').toLowerCase();
 
-            const rarityAgent = document.createElement('p');
-            rarityAgent.classList.add('info-api','no-margin', 'padding');
-            rarityAgent.innerHTML = `Rareza: <span class="info-span">${agent.rarity.name.toUpperCase()}</span>`;
+    if (nameAgentFormatted.includes(agentObj.agent)) {
+      foundResults = true;
+      resultsDiv.classList.remove('display-none');
 
-            const collectionAppearAgent = document.createElement('p');
-            collectionAppearAgent.classList.add('info-api','no-margin', 'padding');
-            collectionAppearAgent.innerHTML = `Colección: <span class="info-span">${agent.collections[0].name.toUpperCase()}</span>`;
+      const divAgent = document.createElement('div');
+      divAgent.classList.add('div-skin');
 
-            const teamAgent = document.createElement('p');
-            teamAgent.classList.add('info-api','no-margin', 'padding');
-            teamAgent.innerHTML = `Equipo: <span class="info-span">${agent.team.name.toUpperCase()}</span>`;
+      const nameAgent = document.createElement('p');
+      nameAgent.classList.add('info-api', 'no-margin', 'padding');
+      nameAgent.innerHTML = `Nombre: <span class="info-span">${nameAgentFormatted.toUpperCase()}</span>`;
 
-            const imageUrlAgent = document.createElement('p');
-            imageUrlAgent.classList.add('info-api','no-margin', 'padding');
-            imageUrlAgent.innerHTML = `Imagen: <a href="${agent.image}" class="image-ancor" target="_blank">Imagen del agente</a>`;
+      const rarityAgent = document.createElement('p');
+      rarityAgent.classList.add('info-api', 'no-margin', 'padding');
+      rarityAgent.innerHTML = `Rareza: <span class="info-span">${agent.rarity.name.toUpperCase()}</span>`;
 
-            divAgent.appendChild(nameAgent);
-            divAgent.appendChild(rarityAgent);
-            divAgent.appendChild(collectionAppearAgent);
-            divAgent.appendChild(teamAgent);
-            divAgent.appendChild(imageUrlAgent);
+      const collectionAppearAgent = document.createElement('p');
+      collectionAppearAgent.classList.add('info-api', 'no-margin', 'padding');
+      collectionAppearAgent.innerHTML = `Colección: <span class="info-span">${agent.collections[0].name.toUpperCase()}</span>`;
 
-            resultsDiv.appendChild(divAgent);
-        }
-    });
+      const teamAgent = document.createElement('p');
+      teamAgent.classList.add('info-api', 'no-margin', 'padding');
+      teamAgent.innerHTML = `Equipo: <span class="info-span">${agent.team.name.toUpperCase()}</span>`;
 
-    if(!foundResults){
-        showAlert('No se encontraron resultados');
-        resultsDiv.classList.add('display-none');
+      const imageUrlAgent = document.createElement('p');
+      imageUrlAgent.classList.add('info-api', 'no-margin', 'padding');
+      imageUrlAgent.innerHTML = `Imagen: <a href="${agent.image}" class="image-ancor" target="_blank">Imagen del agente</a>`;
+
+      divAgent.appendChild(nameAgent);
+      divAgent.appendChild(rarityAgent);
+      divAgent.appendChild(collectionAppearAgent);
+      divAgent.appendChild(teamAgent);
+      divAgent.appendChild(imageUrlAgent);
+
+      resultsDiv.appendChild(divAgent);
     }
+  });
 
-    agentObj.agent = '';
-    searchInput.value = '';
+  if (!foundResults) {
+    showAlert('No se encontraron resultados');
+    resultsDiv.classList.add('display-none');
+  }
+
+  agentObj.agent = '';
+  searchInput.value = '';
 };
