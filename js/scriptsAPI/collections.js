@@ -30,8 +30,8 @@ async function getCollections(event) {
   spanSpinner.classList.add('loader');
   form.appendChild(spanSpinner);
 
-  const url = 'https://bymykel.github.io/CSGO-API/api/es-ES/collections.json';
   try {
+    const url = 'https://cors-anywhere.herokuapp.com/https://bymykel.github.io/CSGO-API/api/es-ES/collections.json';
     const response = await fetch(url);
     const data = await response.json();
     showData(data);

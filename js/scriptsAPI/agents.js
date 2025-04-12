@@ -30,8 +30,8 @@ async function getAgents(event) {
   spanSpinner.classList.add('loader');
   form.appendChild(spanSpinner);
 
-  const url = 'https://bymykel.github.io/CSGO-API/api/es-ES/agents.json';
   try {
+    const url = 'https://cors-anywhere.herokuapp.com/https://bymykel.github.io/CSGO-API/api/es-ES/agents.json';
     const response = await fetch(url);
     const data = await response.json();
     showData(data);
