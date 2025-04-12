@@ -16,7 +16,7 @@ function animRemoveError() {
   const error = document.querySelector('.error');
   setTimeout(() => {
     error.classList.add('disappear');
-    error.addEventListener('animationend', () => removeError.remove());
+    error.addEventListener('animationend', () => error.remove());
   }, 4000);
 };
 
